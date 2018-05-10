@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 
 
 export default class Products extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: []
+            products: [],
+            page: 1
         };
     }
 
@@ -27,16 +28,20 @@ export default class Products extends Component {
         });
     }
 
-    // _renderItem = () => {
-
-    // }
+    _renderItem =({item})=>{
+        return (
+          <TouchableOpacity onPress={()=>this.props.navigation.navigate('Detail',item)}>
+            <Text style={{margin:10,marginBottom:40}}>{item.id} - {item.title}</Text>
+          </TouchableOpacity>
+        );
+    }
 
     render() {
         return (
             <View style={styles.container}>
                 <FlatList
                     data={this.state.products}
-                    renderItem={({item})=> <Text style={{margin:10}}>{item.id} - {item.title}</Text>}
+                    renderItem={this._renderItem }
                     keyExtractor={(item,index)=>`${item.id}`}
                     onEndReachedThreshold={0.5}
                     onEndReached={this._getMore}

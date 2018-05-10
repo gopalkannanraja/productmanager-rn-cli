@@ -5,7 +5,7 @@ class ProductDetail extends Component {
     render() {
         return (
             <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-                {this.props.navigation.state.params.title}
+               <Text> {this.props.navigation.state.params.title}</Text>
             </View>
         );
     }

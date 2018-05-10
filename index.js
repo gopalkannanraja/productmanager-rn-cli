@@ -1,4 +1,5 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+// import App from './App';
+import AppNavigator from './src/routes';
 
-AppRegistry.registerComponent('rnadvanced', () => App);
+AppRegistry.registerComponent('rnadvanced', () => AppNavigator);
