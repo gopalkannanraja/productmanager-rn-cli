@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
-import {createStackNavigator} from "react-navigation";
+import { createStackNavigator, createBottomTabNavigator } from "react-navigation";
 import Products from './components/Products';
 import ProductDetail from './components/ProductDetail';
+import AddProduct from './components/AddProduct';
 
-export default AppNavigator = createStackNavigator({
+const ListStack = createStackNavigator({
     List: {
         screen: Products
     },
     Detail: {
         screen: ProductDetail
-    },
-    AddProduct: {
-        screen: AddProduct
     }
 }, {
     initialRouteName: 'List',
     navigationOptions: {
         title: 'Product Manager'
     }
+});
+
+const AddStack = createStackNavigator({
+    Add: {
+        screen: AddProduct
+    },
+});
+
+export default AppNavigator = createBottomTabNavigator({
+    ListStack: ListStack,
+    AddStack: AddStack
 });
